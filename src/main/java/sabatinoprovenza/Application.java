@@ -1,6 +1,9 @@
 package sabatinoprovenza;
 
-import sabatinoprovenza.entities.*;
+import sabatinoprovenza.entities.Collezione;
+import sabatinoprovenza.entities.Genere;
+import sabatinoprovenza.entities.GiocoDaTavolo;
+import sabatinoprovenza.entities.Videogioco;
 
 import java.util.Scanner;
 
@@ -117,26 +120,42 @@ public class Application {
 //        System.out.println("Gioco inserito correttamente!");
 
 
-        // stampa di prova
-        for (Gioco g : collezione.getCollezione()) {
-            System.out.println(g.getTitolo() + " - " + g.getPrezzo() + "€");
-        }
+        //RICERCA PER ID
+//        System.out.print("\nInserisci l'ID del gioco da cercare: ");
+//        String idRicerca = scanner.nextLine().toUpperCase();
+//
+//        Gioco trovato = collezione.cercaPerId(idRicerca);
+//
+//        if (trovato == null) {
+//            System.out.println("Nessun gioco trovato con ID: " + idRicerca);
+//        } else {
+//            System.out.println("Gioco trovato!");
+//            System.out.println(
+//                    trovato.getTitolo() + " - " +
+//                            trovato.getPrezzo() + "€"
+//            );
+//        }
 
-        System.out.print("\nInserisci l'ID del gioco da cercare: ");
-        String idRicerca = scanner.nextLine().toUpperCase();
 
-        Gioco trovato = collezione.cercaPerId(idRicerca);
+//        System.out.print("Inserisci il prezzo massimo: ");
+//        double prezzoRicerca = Double.parseDouble(scanner.nextLine());
+//
+//        List<Gioco> risultati = collezione.cercaPerPrezzo(prezzoRicerca);
+//
+//        if (risultati.isEmpty()) {
+//            System.out.println("Nessun gioco trovato sotto il prezzo di " + prezzoRicerca + "€");
+//        } else {
+//            System.out.println("Giochi trovati:");
+//            for (Gioco g : risultati) {
+//                System.out.println(g.getTitolo() + " - " + g.getPrezzo() + "€");
+//            }
+//        }
 
-        if (trovato == null) {
-            System.out.println("Nessun gioco trovato con ID: " + idRicerca);
-        } else {
-            System.out.println("Gioco trovato!");
-            System.out.println(
-                    trovato.getTitolo() + " - " +
-                            trovato.getPrezzo() + "€"
-            );
-        }
 
+//        // stampa di prova
+//        for (Gioco g : collezione.getCollezione()) {
+//            System.out.println(g.getTitolo() + " - " + g.getPrezzo() + "€");
+//        }
 
     }
 }

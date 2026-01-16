@@ -1,5 +1,7 @@
 package sabatinoprovenza.entities;
 
+import sabatinoprovenza.IdDuplicatoException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +29,20 @@ public class Collezione {
         }
     }
 
+    //RICERCA PER PREZZO
+    public List<Gioco> cercaPerPrezzo(double prezzoMax) {
+        return collezione.stream()
+                .filter(gioco -> gioco.getPrezzo() < prezzoMax)
+                .toList();
+    }
+
     // AGGIUNTA GIOCO
     public void aggiungi(Gioco gioco) {
+        if (idEsiste(gioco.getIdGioco())) {
+            throw new IdDuplicatoException(
+                    "Gioco con ID già presente: " + gioco.getIdGioco()
+            );
+        }
         collezione.add(gioco);
     }
 
