@@ -1,51 +1,48 @@
 package sabatinoprovenza;
 
-import sabatinoprovenza.entities.Genere;
-import sabatinoprovenza.entities.Gioco;
-import sabatinoprovenza.entities.GiocoDaTavolo;
-import sabatinoprovenza.entities.Videogioco;
+import sabatinoprovenza.entities.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class Application {
 
     public static void main(String[] args) {
-        List<Gioco> catalogo = new ArrayList<>();
+        Collezione collezione = new Collezione();
 
         // VIDEOGIOCHI
-        catalogo.add(new Videogioco(
+        // VIDEOGIOCHI
+        collezione.aggiungi(new Videogioco(
                 "VG01",
                 "The Legend of Zelda",
                 2023,
                 59.99,
                 "Switch",
                 60,
-                Genere.ADVENTURE
+                Genere.adventure
         ));
 
-        catalogo.add(new Videogioco(
+        collezione.aggiungi(new Videogioco(
                 "VG02",
                 "Elden Ring",
                 2022,
                 49.99,
                 "PS5",
                 80,
-                Genere.RPG
+                Genere.rpg
         ));
 
-        catalogo.add(new Videogioco(
+        collezione.aggiungi(new Videogioco(
                 "VG03",
                 "FIFA 26",
                 2025,
                 69.99,
                 "PS5",
                 100,
-                Genere.SPORTS
+                Genere.sports
         ));
 
         // GIOCHI DA TAVOLO
-        catalogo.add(new GiocoDaTavolo(
+        collezione.aggiungi(new GiocoDaTavolo(
                 "GT01",
                 "Catan",
                 1995,
@@ -54,7 +51,7 @@ public class Application {
                 75
         ));
 
-        catalogo.add(new GiocoDaTavolo(
+        collezione.aggiungi(new GiocoDaTavolo(
                 "GT02",
                 "Risiko",
                 1957,
@@ -63,9 +60,53 @@ public class Application {
                 120
         ));
 
-        // STAMPA DI PROVA
-        for (Gioco g : catalogo) {
+
+        Scanner scanner = new Scanner(System.in);
+        //AGGIUNTA VIDEOGIOCO UTENTE
+
+        String id;
+        while (true) {
+            System.out.print("ID gioco: ");
+            id = scanner.nextLine().toUpperCase();
+
+            if (collezione.idEsiste(id)) {
+                System.out.println("ID già presente. Inseriscine un altro");
+            }
+            break;
+        }
+
+// ORA chiedo tutto il resto (una sola volta)
+        System.out.print("Titolo: ");
+        String titolo = scanner.nextLine();
+
+        System.out.print("Anno pubblicazione: ");
+        int anno = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Prezzo: ");
+        double prezzo = Double.parseDouble(scanner.nextLine());
+
+        System.out.print("Piattaforma: ");
+        String piattaforma = scanner.nextLine();
+
+        System.out.print("Durata (ore): ");
+        int durata = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Genere (ACTION, RPG, STRATEGY, SPORTS, ADVENTURE, SIMULATION): ");
+        Genere genere = Genere.valueOf(scanner.nextLine());
+
+        Videogioco v = new Videogioco(
+                id, titolo, anno, prezzo, piattaforma, durata, genere
+        );
+        collezione.aggiungi(v);
+
+        System.out.println("Gioco inserito correttamente!");
+
+
+        // stampa di prova
+        for (Gioco g : collezione.getCollezione()) {
             System.out.println(g.getTitolo() + " - " + g.getPrezzo() + "€");
         }
     }
 }
+
+

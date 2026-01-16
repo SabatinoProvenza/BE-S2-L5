@@ -1,10 +1,10 @@
 package sabatinoprovenza.entities;
 
 public enum Genere {
-    ACTION,
-    RPG,
-    STRATEGY,
-    SPORTS,
-    ADVENTURE,
-    SIMULATION
+    action,
+    rpg,
+    strategy,
+    sports,
+    adventure,
+    simulation
 }
