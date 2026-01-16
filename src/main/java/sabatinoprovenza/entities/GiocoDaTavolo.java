@@ -15,4 +15,16 @@ public class GiocoDaTavolo extends Gioco {
         if (numeroGiocatori < 2 || numeroGiocatori > 10)
             throw new IllegalArgumentException("Il numero dei giocatori deve essere tra 2 e 10");
     }
+
+    public int getNumeroGiocatori() {
+        return numeroGiocatori;
+    }
+
+    public void setNumeroGiocatori(int numeroGiocatori) {
+        this.numeroGiocatori = numeroGiocatori;
+    }
+
+    public void setDurataMediaMinuti(int durataMediaMinuti) {
+        this.durataMediaMinuti = durataMediaMinuti;
+    }
 }

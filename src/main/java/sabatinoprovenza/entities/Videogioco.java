@@ -12,4 +12,16 @@ public class Videogioco extends Gioco {
         this.durataOre = durataOre;
         this.genere = genere;
     }
+
+    public void setPiattaforma(String piattaforma) {
+        this.piattaforma = piattaforma;
+    }
+
+    public void setDurataOre(int durataOre) {
+        this.durataOre = durataOre;
+    }
+
+    public void setGenere(Genere genere) {
+        this.genere = genere;
+    }
 }

@@ -24,7 +24,29 @@ public class Gioco {
         return titolo;
     }
 
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
+    }
+
     public double getPrezzo() {
         return prezzo;
+    }
+
+    public void setPrezzo(double prezzo) {
+        this.prezzo = prezzo;
+    }
+
+    public void setAnnoPubblicazione(int annoPubblicazione) {
+        this.annoPubblicazione = annoPubblicazione;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "ID = '" + idGioco + '\'' +
+                ", titolo ='" + titolo + '\'' +
+                ", annoPubblicazione =" + annoPubblicazione +
+                ", prezzo =" + prezzo +
+                '}';
     }
 }
