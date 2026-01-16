@@ -11,6 +11,8 @@ public class Gioco {
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
         this.prezzo = prezzo;
+
+        if (prezzo <= 0) throw new IllegalArgumentException("Il prezzo deve essere magigore di 0");
     }
 
 

@@ -71,19 +71,34 @@ public class Application {
 
             if (collezione.idEsiste(id)) {
                 System.out.println("ID già presente. Inseriscine un altro");
+            } else {
+                break;
             }
-            break;
         }
 
-// ORA chiedo tutto il resto (una sola volta)
         System.out.print("Titolo: ");
         String titolo = scanner.nextLine();
 
         System.out.print("Anno pubblicazione: ");
         int anno = Integer.parseInt(scanner.nextLine());
 
-        System.out.print("Prezzo: ");
-        double prezzo = Double.parseDouble(scanner.nextLine());
+        double prezzo;
+
+        while (true) {
+            try {
+                System.out.print("Prezzo: ");
+                prezzo = Double.parseDouble(scanner.nextLine());
+                if (prezzo > 0)
+                    break;
+                else {
+                    System.out.println("Numero inserito non valido,riprova");
+                    
+                }
+
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
         System.out.print("Piattaforma: ");
         String piattaforma = scanner.nextLine();
