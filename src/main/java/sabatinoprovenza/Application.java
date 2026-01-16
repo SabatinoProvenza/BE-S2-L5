@@ -64,63 +64,80 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         //AGGIUNTA VIDEOGIOCO UTENTE
 
-        String id;
-        while (true) {
-            System.out.print("ID gioco: ");
-            id = scanner.nextLine().toUpperCase();
-
-            if (collezione.idEsiste(id)) {
-                System.out.println("ID già presente. Inseriscine un altro");
-            } else {
-                break;
-            }
-        }
-
-        System.out.print("Titolo: ");
-        String titolo = scanner.nextLine();
-
-        System.out.print("Anno pubblicazione: ");
-        int anno = Integer.parseInt(scanner.nextLine());
-
-        double prezzo;
-
-        while (true) {
-            try {
-                System.out.print("Prezzo: ");
-                prezzo = Double.parseDouble(scanner.nextLine());
-                if (prezzo > 0)
-                    break;
-                else {
-                    System.out.println("Numero inserito non valido,riprova");
-                    
-                }
-
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
-        System.out.print("Piattaforma: ");
-        String piattaforma = scanner.nextLine();
-
-        System.out.print("Durata (ore): ");
-        int durata = Integer.parseInt(scanner.nextLine());
-
-        System.out.print("Genere (ACTION, RPG, STRATEGY, SPORTS, ADVENTURE, SIMULATION): ");
-        Genere genere = Genere.valueOf(scanner.nextLine());
-
-        Videogioco v = new Videogioco(
-                id, titolo, anno, prezzo, piattaforma, durata, genere
-        );
-        collezione.aggiungi(v);
-
-        System.out.println("Gioco inserito correttamente!");
+//        String id;
+//        while (true) {
+//            System.out.print("ID gioco: ");
+//            id = scanner.nextLine().toUpperCase();
+//
+//            if (collezione.idEsiste(id)) {
+//                System.out.println("ID già presente. Inseriscine un altro");
+//            } else {
+//                break;
+//            }
+//        }
+//
+//        System.out.print("Titolo: ");
+//        String titolo = scanner.nextLine();
+//
+//        System.out.print("Anno pubblicazione: ");
+//        int anno = Integer.parseInt(scanner.nextLine());
+//
+//        double prezzo;
+//
+//        while (true) {
+//            try {
+//                System.out.print("Prezzo: ");
+//                prezzo = Double.parseDouble(scanner.nextLine());
+//                if (prezzo > 0)
+//                    break;
+//                else {
+//                    System.out.println("Numero inserito non valido,riprova");
+//
+//                }
+//
+//            } catch (IllegalArgumentException e) {
+//                System.out.println(e.getMessage());
+//            }
+//        }
+//
+//        System.out.print("Piattaforma: ");
+//        String piattaforma = scanner.nextLine();
+//
+//        System.out.print("Durata (ore): ");
+//        int durata = Integer.parseInt(scanner.nextLine());
+//
+//        System.out.print("Genere (ACTION, RPG, STRATEGY, SPORTS, ADVENTURE, SIMULATION): ");
+//        Genere genere = Genere.valueOf(scanner.nextLine());
+//
+//        Videogioco v = new Videogioco(
+//                id, titolo, anno, prezzo, piattaforma, durata, genere
+//        );
+//        collezione.aggiungi(v);
+//
+//        System.out.println("Gioco inserito correttamente!");
 
 
         // stampa di prova
         for (Gioco g : collezione.getCollezione()) {
             System.out.println(g.getTitolo() + " - " + g.getPrezzo() + "€");
         }
+
+        System.out.print("\nInserisci l'ID del gioco da cercare: ");
+        String idRicerca = scanner.nextLine().toUpperCase();
+
+        Gioco trovato = collezione.cercaPerId(idRicerca);
+
+        if (trovato == null) {
+            System.out.println("Nessun gioco trovato con ID: " + idRicerca);
+        } else {
+            System.out.println("Gioco trovato!");
+            System.out.println(
+                    trovato.getTitolo() + " - " +
+                            trovato.getPrezzo() + "€"
+            );
+        }
+
+
     }
 }
 

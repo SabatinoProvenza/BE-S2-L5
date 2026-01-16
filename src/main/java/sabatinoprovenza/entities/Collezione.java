@@ -16,6 +16,17 @@ public class Collezione {
                 .anyMatch(g -> g.getIdGioco().equals(id));
     }
 
+    //RICERCA PER ID
+    public Gioco cercaPerId(String id) {
+        List<Gioco> trovati = collezione.stream().filter(gioco -> gioco.getIdGioco().equals(id))
+                .toList();
+        if (!trovati.isEmpty()) {
+            return trovati.get(0);
+        } else {
+            return null;
+        }
+    }
+
     // AGGIUNTA GIOCO
     public void aggiungi(Gioco gioco) {
         collezione.add(gioco);
